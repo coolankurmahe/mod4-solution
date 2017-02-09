@@ -32,15 +32,17 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
-  .state('categories.items', {
-    url: '/item-list/{itemId}',
+  .state('items', {
+    url: '/item-list/{category}',
     templateUrl: 'src/menu/templates/item-detail.template.html',
     controller: "ItemDetailController as itemDetail",
-    // resolve: {
-    //   itemforcat: ['MenuDataService', function (MenuDataService) {
-    //     return MenuDataService.getItemsForCategory(categories[itemId]);
-    //   }]
-    // }
+    resolve: {
+      items: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
+        return MenuDataService.getItemsForCategory($stateParams.category).then(function(response) {
+          return response.data.menu_items;
+        });
+      }]
+    }
   });
 
 }

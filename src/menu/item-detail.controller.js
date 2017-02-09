@@ -5,10 +5,11 @@ angular.module('MenuApp')
 .controller('ItemDetailController', ItemDetailController);
 
 
-ItemDetailController.$inject = ['MenuDataService','$stateParams', 'categories'];
-function ItemDetailController(MenuDataService,$stateParams, categories) {
+ItemDetailController.$inject = ['MenuDataService','$stateParams', 'items'];
+function ItemDetailController(MenuDataService,$stateParams, items) {
   var itemDetail = this;
-  var categorieslist = categories.data;
+  itemDetail.menuItems = items;
+/*  var categorieslist = categories.data;
   var catitem = categorieslist[$stateParams.itemId];
 
   //  console.log(catitem);
@@ -22,7 +23,7 @@ var itemsforcat;
     .catch(function (error) {
       console.log(error);
     })
-
+*/
 
   // itemDetail.menuItems = itemsforcatdata.menu_items;
 
