@@ -9,13 +9,13 @@ MenuDataService.$inject = ['$http'];
 function MenuDataService($http)
  {
   var service = this;
- // var ApiBasePath= "https://davids-restaurant.herokuapp.com";
-  var ApiBasePath= "http://rest.kegg.jp/list/organism";
+  var ApiBasePath= "https://davids-restaurant.herokuapp.com";
+ // var ApiBasePath= "http://rest.kegg.jp/list/organism";
   service.getAllCategories = function ()
    {
     var response = $http({
       method: "GET",
-      //url: (ApiBasePath + "/categories.json")
+      url: (ApiBasePath + "/categories.json")
       url: (ApiBasePath)
     });
     console.log(response);
