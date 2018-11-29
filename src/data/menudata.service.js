@@ -16,7 +16,7 @@ function MenuDataService($http)
       method: "GET",
       url: (ApiBasePath + "/categories.json")
     });
-
+    console.log(response);
     return response;
   };
 
